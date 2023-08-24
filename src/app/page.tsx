@@ -1,47 +1,40 @@
-import Image from 'next/image'
-
 import backgroundWeb from '@/assets/background-web.png'
 import backgroundMobile from '@/assets/background-mobile.png'
 
 import Background from './components/Background'
 
-function BackgroundWeb() {
-  return (
-    <Image 
-      src={backgroundWeb}
-      alt='Background image'
-      className='w-full -z-10 h-[11rem]'
-      quality={100}
-      placeholder='blur'
-      
-      // sizes='(max-width: 768px) 100vw 30vh, 50vw'
-    />
-  )
-}
-
-function BackgroundMobile() {
-  return (
-    <Image 
-      src={backgroundMobile}
-      alt='Background image'
-      className='w-full -z-10 h-[11rem]'
-      quality={100}
-      placeholder='blur'
-    />
-  )
-}
 
 export default function Home() {
   return (
-    <div className=''>
-      <div className=''>
+    <div className='bg-gray-600 h-screen'>
+      <header className=''>
         <Background 
-          alt='My Hero'
+          alt='Background image'
           desktopImage={backgroundWeb}
           mobileImage={backgroundMobile}
+          className='-z-10'
         />
-      </div>
-      <div className='relative top-0'>Teste</div>
+      </header>
+      
+      <main className='flex flex-col items-center justify-center px-6'>
+        <h1 className='text-gray-100 font-bold text-2xl'>Lista de Compras</h1>
+
+        <div>
+          <form>
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="" className='text-gray-200 text-xs'>Item</label>
+              <input 
+                type="text" 
+                id='item'
+                name='item'
+                required
+                className='p-3 text-gray-100 bg-gray-500 border-[1px] border-gray-300 rounded-md'
+                style={{ width: 'calc(100vw - 1.5rem)' }}
+              />
+            </div>
+          </form>
+        </div>
+      </main>
     </div>
   )
 }
