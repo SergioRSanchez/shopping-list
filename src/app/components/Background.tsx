@@ -14,7 +14,7 @@ const Background = ({
   breakpoint = 640,
   desktopImage,
   mobileImage,
-  style = { objectFit: 'contain' },
+  style = { objectFit: 'contain', width: '100%' },
   ...props
 }: {
   breakpoint?: number
