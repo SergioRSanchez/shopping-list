@@ -6,5 +6,9 @@
   #item {
     width: calc(100vw - 2rem);
   }
+
+  .item-item {
+    width: calc(100vw - 2rem);
+  }
 }
 
