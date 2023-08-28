@@ -5,6 +5,66 @@ import backgroundMobile from '@/assets/background-mobile.png'
 
 import Background from './components/Background'
 
+interface Item {
+  id: number
+  item: string
+  quantity: number
+  measure: string
+  category: string
+  done: boolean
+}
+
+const data: Item[] = [
+  {
+    id: 1,
+    item: 'Maça',
+    quantity: 1,
+    measure: 'unit',
+    category: 'fruit',
+    done: false
+  },
+  {
+    id: 2,
+    item: 'Pão francês',
+    quantity: 4,
+    measure: 'unit',
+    category: 'bakery',
+    done: false
+  },
+  {
+    id: 3,
+    item: 'Brócolis',
+    quantity: 1,
+    measure: 'unit',
+    category: 'vegetable',
+    done: false
+  },
+  {
+    id: 4,
+    item: 'Leite',
+    quantity: 2,
+    measure: 'liter',
+    category: 'drink',
+    done: false
+  },
+  {
+    id: 5,
+    item: 'Peito de frango',
+    quantity: 2,
+    measure: 'weight',
+    category: 'meat',
+    done: false
+  },
+  {
+    id: 6,
+    item: 'Mamão',
+    quantity: 1,
+    measure: 'unit',
+    category: 'fruit',
+    done: true
+  },
+]
+
 
 export default function Home() {
   return (
@@ -19,14 +79,14 @@ export default function Home() {
       </header>
       
       
-        <main className='flex flex-col items-center justify-center px-6 sm:px-12'>
-          <h1 className='text-gray-100 font-bold text-2xl'>Lista de Compras</h1>
+        <main className='flex flex-col sm:items-center justify-center px-6'>
+          <h1 className='text-gray-100 text-center font-bold text-2xl'>Lista de Compras</h1>
 
           {/* FORMULÁRIOS */}
-          <div>
+          <div className='sm:w-[45rem]'>
             <form className='flex flex-col gap-3 lg:flex-row'>
               {/* ITENS */}
-              <div className='flex flex-col gap-2 group'>
+              <div className='flex flex-col gap-2 group flex-1'>
                 <label htmlFor="item" className='text-gray-200 text-xs group group-focus-within:text-purple-light transition-all duration-200'>Item</label>
                 <input 
                   type="text" 
@@ -44,7 +104,7 @@ export default function Home() {
                   <label htmlFor="quantity" className='text-gray-200 text-xs group group-focus-within:text-purple-light transition-all duration-200'>Quantidade</label>
                   <div className='flex'>
                     <input type="number" id='quantity' name='quantity' required className='p-3 text-sm text-gray-100 bg-gray-500 w-[4.5rem] border-[1px] border-gray-300 rounded-l-md focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1'/>
-                    <select name="measure" id="measure" className='p-3 bg-gray-400 text-xs text-gray-200 rounded-r-md w-[4.5rem]'>
+                    <select name="measure" id="measure" className='p-3 bg-gray-400 text-xs text-gray-200 rounded-r-md w-[4.5rem] group focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1'>
                       <option value="unit" className='hover:bg-red-500'>Un.</option>
                       <option value="liter">L</option>
                       <option value="weight">Kg</option>
@@ -74,9 +134,9 @@ export default function Home() {
           </div>
 
           {/* LISTA */}
-          <div className='mt-10 sm:w-96'>
+          <div className='mt-10 sm:w-[45rem] flex flex-col items-stretch gap-2 sm:gap-3'>
             {/* ITEM */}
-            <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between item-item'>
+            <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between flex-1'>
               <div className='flex items-center gap-4'>
                 <div  className='border-purple-light bg-gray-400'>
                   <input type="checkbox" name="" id=""/>
@@ -95,6 +155,28 @@ export default function Home() {
                 <MoreVertical className='text-purple-light w-5 h-5' />
               </div>
             </div>
+            
+            
+            <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between item-item flex-1'>
+              <div className='flex items-center gap-4'>
+                <div  className='border-purple-light bg-gray-400'>
+                  <input type="checkbox" name="" id=""/>
+                </div>
+                <div>
+                  <p className='text-gray-100 text-sm font-bold'>Maça</p>
+                  <p className='text-gray-200 text-xs'>2 unidades</p>
+                </div>
+              </div>
+              
+              <div className='flex items-center gap-3'>
+                <div className='bg-orange-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
+                  <Apple className='text-orange h-4 w-4'/>
+                  <span className='text-orange text-xs hidden sm:block'>fruta</span>
+                </div>
+                <MoreVertical className='text-purple-light w-5 h-5' />
+              </div>
+            </div>
+
           </div>
         </main>
 

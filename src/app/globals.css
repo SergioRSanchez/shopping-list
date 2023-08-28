@@ -1,14 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@media (max-width: 768px) {
-  #item {
-    width: calc(100vw - 2rem);
-  }
-
-  .item-item {
-    width: calc(100vw - 2rem);
-  }
-}
-
