@@ -74,7 +74,7 @@ export default function Home() {
           </div>
 
           {/* LISTA */}
-          <div className='mt-10'>
+          <div className='mt-10 sm:w-96'>
             {/* ITEM */}
             <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between item-item'>
               <div className='flex items-center gap-4'>
@@ -87,10 +87,10 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className='flex items-center'>
-                <div className='bg-orange-dark px-4 py-2 rounded-full flex items-center gap-1'>
-                  <Apple className='text-orange h-4 2-4'/>
-                  <span className='text-orange text-xs'>fruta</span>
+              <div className='flex items-center gap-3'>
+                <div className='bg-orange-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
+                  <Apple className='text-orange h-4 w-4'/>
+                  <span className='text-orange text-xs hidden sm:block'>fruta</span>
                 </div>
                 <MoreVertical className='text-purple-light w-5 h-5' />
               </div>
