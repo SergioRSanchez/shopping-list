@@ -24,7 +24,7 @@ interface Item {
 
 export default function Home() {
   const [ itemDescription, setItemDescription ] = useState('')
-  const [ itemQuantity, setItemQuantity ] = useState('1')
+  const [ itemQuantity, setItemQuantity ] = useState('')
   const formattedItemQuantity = parseInt(itemQuantity)
   const [ itemMeasure, setItemMeasure ] = useState('unit')
   const [ itemCategory, setItemCategory ] = useState('')
