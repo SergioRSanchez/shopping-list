@@ -4,6 +4,7 @@ import backgroundWeb from '@/assets/background-web.png'
 import backgroundMobile from '@/assets/background-mobile.png'
 
 import Background from './components/Background'
+import Item from './components/Item'
 
 interface Item {
   id: number
@@ -18,49 +19,49 @@ const data: Item[] = [
   {
     id: 1,
     item: 'Maça',
-    quantity: 1,
-    measure: 'unit',
-    category: 'fruit',
+    quantity: 2,
+    measure: 'unidades',
+    category: 'fruta',
     done: false
   },
   {
     id: 2,
     item: 'Pão francês',
     quantity: 4,
-    measure: 'unit',
-    category: 'bakery',
+    measure: 'unidades',
+    category: 'padaria',
     done: false
   },
   {
     id: 3,
     item: 'Brócolis',
     quantity: 1,
-    measure: 'unit',
-    category: 'vegetable',
+    measure: 'unidade',
+    category: 'legume',
     done: false
   },
   {
     id: 4,
     item: 'Leite',
     quantity: 2,
-    measure: 'liter',
-    category: 'drink',
+    measure: 'litros',
+    category: 'bebida',
     done: false
   },
   {
     id: 5,
     item: 'Peito de frango',
     quantity: 2,
-    measure: 'weight',
-    category: 'meat',
+    measure: 'kg',
+    category: 'carne',
     done: false
   },
   {
     id: 6,
     item: 'Mamão',
     quantity: 1,
-    measure: 'unit',
-    category: 'fruit',
+    measure: 'unidade',
+    category: 'fruta',
     done: true
   },
 ]
@@ -136,47 +137,19 @@ export default function Home() {
           {/* LISTA */}
           <div className='mt-10 sm:w-[45rem] flex flex-col items-stretch gap-2 sm:gap-3'>
             {/* ITEM */}
-            <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between flex-1'>
-              <div className='flex items-center gap-4'>
-                <div  className='border-purple-light bg-gray-400'>
-                  <input type="checkbox" name="" id=""/>
-                </div>
-                <div>
-                  <p className='text-gray-100 text-sm font-bold'>Maça</p>
-                  <p className='text-gray-200 text-xs'>2 unidades</p>
-                </div>
-              </div>
-              
-              <div className='flex items-center gap-3'>
-                <div className='bg-orange-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
-                  <Apple className='text-orange h-4 w-4'/>
-                  <span className='text-orange text-xs hidden sm:block'>fruta</span>
-                </div>
-                <MoreVertical className='text-purple-light w-5 h-5' />
-              </div>
-            </div>
-            
-            
-            <div className='bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between item-item flex-1'>
-              <div className='flex items-center gap-4'>
-                <div  className='border-purple-light bg-gray-400'>
-                  <input type="checkbox" name="" id=""/>
-                </div>
-                <div>
-                  <p className='text-gray-100 text-sm font-bold'>Maça</p>
-                  <p className='text-gray-200 text-xs'>2 unidades</p>
-                </div>
-              </div>
-              
-              <div className='flex items-center gap-3'>
-                <div className='bg-orange-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
-                  <Apple className='text-orange h-4 w-4'/>
-                  <span className='text-orange text-xs hidden sm:block'>fruta</span>
-                </div>
-                <MoreVertical className='text-purple-light w-5 h-5' />
-              </div>
-            </div>
-
+            {
+              data.map((item) => (
+                <Item
+                  key={item.id}
+                  id={item.id}
+                  item={item.item}
+                  quantity={item.quantity}
+                  measure={item.measure}
+                  category={item.category}
+                  done={item.done}
+                />
+              ))
+            }
           </div>
         </main>
 
