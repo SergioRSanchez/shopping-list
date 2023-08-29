@@ -19,41 +19,48 @@ export default function Item(props: Item) {
         </div>
         <div>
           <p className={`text-gray-100 text-sm font-bold ${props.done && 'line-through'}`}>{props.item}</p>
-          <p className='text-gray-200 text-xs'>{props.quantity} {props.measure}</p>
+          <p className='text-gray-200 text-xs'>
+            {props.quantity == 1 && props.measure === 'unit' && `${props.quantity} unidade`}
+            {props.quantity != 1 && props.measure === 'unit' && `${props.quantity} unidades`}
+            {props.quantity == 1 && props.measure === 'liter' && `${props.quantity} litro`}
+            {props.quantity != 1 && props.measure === 'liter' && `${props.quantity} litros`}
+            {props.quantity == 1 && props.measure === 'weight' && `${props.quantity} Kg`}
+            {props.quantity != 1 && props.measure === 'weight' && `${props.quantity} Kgs`}
+          </p>
         </div>
       </div>
       
       <div className='flex items-center gap-3'>
         {
-          props.category === 'fruta' &&
+          props.category === 'fruit' &&
           <div className='bg-orange-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
             <Apple className='text-orange h-4 w-4'/>
             <span className='text-orange text-xs font-semibold hidden sm:block'>{props.category}</span>
           </div>
         }
         {
-          props.category === 'padaria' &&
+          props.category === 'bakery' &&
           <div className='bg-yellow-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
             <Sandwich className='text-yellow h-4 w-4'/>
             <span className='text-yellow text-xs font-semibold hidden sm:block'>{props.category}</span>
           </div>
         }
         {
-          props.category === 'legume' &&
+          props.category === 'vegetable' &&
           <div className='bg-green-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
             <Carrot className='text-green h-4 w-4'/>
             <span className='text-green text-xs font-semibold hidden sm:block'>{props.category}</span>
           </div>
         }
         {
-          props.category === 'bebida' &&
+          props.category === 'drink' &&
           <div className='bg-blue-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
             <Milk className='text-blue h-4 w-4'/>
             <span className='text-blue text-xs font-semibold hidden sm:block'>{props.category}</span>
           </div>
         }
         {
-          props.category === 'carne' &&
+          props.category === 'meat' &&
           <div className='bg-pink-dark p-2 sm:px-4 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2'>
             <Beef className='text-pink h-4 w-4'/>
             <span className='text-pink text-xs font-semibold hidden sm:block'>{props.category}</span>
