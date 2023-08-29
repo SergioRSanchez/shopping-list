@@ -24,8 +24,8 @@ export default function Item(props: Item) {
             {props.quantity != 1 && props.measure === 'unit' && `${props.quantity} unidades`}
             {props.quantity == 1 && props.measure === 'liter' && `${props.quantity} litro`}
             {props.quantity != 1 && props.measure === 'liter' && `${props.quantity} litros`}
-            {props.quantity == 1 && props.measure === 'weight' && `${props.quantity} Kg`}
-            {props.quantity != 1 && props.measure === 'weight' && `${props.quantity} Kgs`}
+            {props.quantity == 1 && props.measure === 'weight' && `${props.quantity} kg`}
+            {props.quantity != 1 && props.measure === 'weight' && `${props.quantity} kgs`}
           </p>
         </div>
       </div>

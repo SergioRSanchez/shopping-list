@@ -90,7 +90,8 @@ export default function Home() {
                       type="number" 
                       id='quantity' 
                       name='quantity' 
-                      required 
+                      required
+                      min='1'
                       value={itemQuantity}
                       onChange={(e) => setItemQuantity(e.target.value)}
                       className='p-3 text-sm text-gray-100 bg-gray-500 w-[4.5rem] border-[1px] border-gray-300 rounded-l-md focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1'
