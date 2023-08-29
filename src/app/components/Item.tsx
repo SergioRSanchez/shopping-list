@@ -66,7 +66,7 @@ export default function Item(props: Item) {
             <span className='text-pink text-xs font-semibold hidden sm:block'>carne</span>
           </div>
         }
-        <MoreVertical className='text-purple-light w-5 h-5' />
+        <MoreVertical className='text-purple-light hover:text-purple w-5 h-5 transition-all duration-200' />
       </div>
     </div>
   )
