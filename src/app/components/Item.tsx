@@ -16,15 +16,16 @@ export default function Item(props: Item) {
 
   return (
     <div  className={`bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between flex-1 ${props.done && 'opacity-50'} `}>
-      <label 
-        onClick={props.handleToggleDone} 
-        className='border-purple-light bg-gray-400 flex items-center gap-4 cursor-pointer'
+      <div
+        className='border-purple-light bg-gray-400 flex items-center gap-4'
       >
         <input 
-          type="checkbox" 
-          name="" 
-          id="" 
-          className='appearance-none w-6 h-6 border-2 rounded-md border-purple-light hover:bg-purple-dark checked:bg-success checked:border-success checked:hover:bg-success-light checked:hover:border-success-light transition-all duration-200 checked:after:content-["✓"] items-center justify-center flex text-white'
+          type="checkbox"
+          onClick={props.handleToggleDone}
+          name={props.item}
+          id={props.id.toString()}
+          checked={props.done}
+          className='appearance-none cursor-pointer w-6 h-6 border-2 rounded-md border-purple-light hover:bg-purple-dark checked:bg-success checked:border-success checked:hover:bg-success-light checked:hover:border-success-light transition-all duration-200 checked:after:content-["✓"] items-center justify-center flex text-white'
         />
         <div>
           <p className={`text-gray-100 text-sm font-bold capitalize ${props.done && 'line-through'}`}>{props.item}</p>
@@ -37,7 +38,7 @@ export default function Item(props: Item) {
             {props.quantity != 1 && props.measure === 'weight' && `${props.quantity} kgs`}
           </p>
         </div>
-      </label>
+      </div>
       
       <div className='flex items-center gap-3'>
         {
