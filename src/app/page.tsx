@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Check, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 
 import Background from './components/Background'
 import Item from './components/Item'
@@ -23,9 +23,9 @@ interface Item {
 
 
 export default function Home() {
+
   const [ itemDescription, setItemDescription ] = useState('')
   const [ itemQuantity, setItemQuantity ] = useState('')
-  const formattedItemQuantity = parseInt(itemQuantity)
   const [ itemMeasure, setItemMeasure ] = useState('unit')
   const [ itemCategory, setItemCategory ] = useState('')
 
@@ -33,19 +33,42 @@ export default function Home() {
 
   function addItem(e: React.FormEvent) {
     e.preventDefault()
-    data.push({
-      id: Date.now(),
-      item: itemDescription,
-      quantity: formattedItemQuantity,
-      measure: itemMeasure,
-      category: itemCategory,
-      done: false
-    })
-    setData(data)
+    const formattedItemQuantity = parseInt(itemQuantity)
+
+    setData(prevData => [
+      ...prevData,
+      {
+        id: Date.now(),
+        item: itemDescription,
+        quantity: formattedItemQuantity,
+        measure: itemMeasure,
+        category: itemCategory,
+        done: false
+      }
+    ])
     setItemDescription('')
     setItemQuantity('1')
     setItemMeasure('unit')
     setItemCategory('')
+  }
+
+  function handleToggleDone(id: number) {
+    const newData = data.map(item => {
+      if (item.id === id) { 
+        return { ...item, done: !item.done }
+      }
+      return item
+    })
+    setData(newData)
+  }
+
+  function handleDeleteItem(id: number) {
+    const newData = data.filter(item => item.id !== id)
+    setData(newData)
+  }
+
+  function handleCleanList() {
+    setData([])
   }
 
   return (
@@ -157,6 +180,9 @@ export default function Home() {
                     measure={item.measure}
                     category={item.category}
                     done={item.done}
+                    handleToggleDone={() => handleToggleDone(item.id)}
+                    handleDeleteItem={() => handleDeleteItem(item.id)}
+                    handleCleanList={handleCleanList}
                   />
                 ))
               }
