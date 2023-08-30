@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Plus } from 'lucide-react'
+import { Plus, ChevronDown, ChevronUp, Check, Sandwich, Carrot, Beef, Apple, Milk } from 'lucide-react'
 
 import Background from './components/Background'
 import Item from './components/Item'
@@ -30,6 +30,11 @@ export default function Home() {
   const [ itemCategory, setItemCategory ] = useState('')
 
   const [ data, setData ] = useLocalStorage<Item[]>('data', [])
+
+  function handleCategoryMenu() {
+    const categoryMenu = document.getElementById('categories-menu')
+    categoryMenu?.classList.toggle('hidden')
+  }
 
   function addItem(e: React.FormEvent) {
     e.preventDefault()
@@ -135,28 +140,87 @@ export default function Home() {
                 </div>
 
                 {/* CATEGORIA */}
-                <div className='flex flex-col gap-2 group'>
-                  <label htmlFor="" className='text-gray-200 text-xs group group-focus-within:text-purple-light transition-all duration-200'>Categoria</label>
-                  <select 
-                    name="category"
-                    id="category"
-                    required
-                    value={itemCategory}
-                    onChange={(e) => setItemCategory(e.target.value)}
-                    className='bg-gray-400 text-xs text-gray-200 rounded-r-md p-[0.875rem] w-32 border-[1px] border-gray-300 rounded-l-md focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1'
-                  >
-                    <option value="" className='text-gray-200'>Selecione</option>
-                    <option value="bakery" className='text-gray-100'>Padaria</option>
-                    <option value="vegetable" className='text-gray-100'>Legume</option>
-                    <option value="meat" className='text-gray-100'>Carne</option>
-                    <option value="fruit" className='text-gray-100'>Fruta</option>
-                    <option value="drink" className='text-gray-100'>Bebida</option>
-                  </select>
+                <div className='flex flex-col flex-1 relative'>
+                  <div className='relative flex flex-col gap-2 '>
+                    <input onClick={handleCategoryMenu} type="checkbox" id='category' className='peer absolute inset-0 opacity-0 z-10 cursor-pointer'/> {/* talvez trocar a opacidade */}
+                    <label htmlFor='category' className='text-xs text-gray-200 peer-checked:text-purple-light transition-all duration-200'>Categoria</label>
+                    <div className='flex justify-between items-center p-[0.875rem] w-32 border-[1px] bg-gray-400 text-xs text-gray-200 rounded-md border-gray-300 focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1 peer-checked:border-purple-light peer-checked:ring-1 peer-checked:ring-purple-light peer-checked:outline-none'>
+                      <p>Selecione</p>
+                      <ChevronDown className='w-4 h-4 text-gray-200'/>
+                    </div>
+                  </div>
+
+                  <ul id='categories-menu' className='mt-1 w-32 absolute top-20 left-0 hidden'>
+                    <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 rounded-t-md relative gap-2'>
+                      <input 
+                        type="radio" 
+                        name="category" 
+                        value="bakery" 
+                        id="" 
+                        className='peer absolute inset-0 opacity-0' 
+                        onChange={e => setItemCategory(e.target.value)}
+                      />
+                      <Sandwich className='w-4 h-4 text-yellow'/>
+                      <span className='text-gray-100 text-sm'>Padaria</span>
+                      <span className='peer-checked:after:content-["✓"] text-sm text-purple-light absolute right-3'></span>
+                    </li>
+                    <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 relative gap-2'>
+                      <input 
+                        type="radio" 
+                        name="category" 
+                        value="vegetable" 
+                        id="" 
+                        className='peer absolute inset-0 opacity-0' 
+                        onChange={e => setItemCategory(e.target.value)}
+                      />
+                      <Carrot className='w-4 h-4 text-green'/>
+                      <span className='text-gray-100 text-sm'>Legume</span>
+                      <span className='peer-checked:after:content-["✓"] text-sm text-purple-light absolute right-3'></span>
+                    </li>
+                    <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 relative gap-2'>
+                      <input 
+                        type="radio" 
+                        name="category" 
+                        value="meat" 
+                        id="" 
+                        className='peer absolute inset-0 opacity-0'
+                        onChange={e => setItemCategory(e.target.value)}
+                      />
+                      <Beef className='w-4 h-4 text-pink'/>
+                      <span className='text-gray-100 text-sm'>Carne</span>
+                      <span className='peer-checked:after:content-["✓"] text-sm text-purple-light absolute right-3'></span>
+                    </li>
+                    <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 relative gap-2'>
+                      <input 
+                      type="radio" 
+                      name="category" 
+                      value="fruit" 
+                      id="" 
+                      className='peer absolute inset-0 opacity-0'
+                      onChange={e => setItemCategory(e.target.value)}
+                      />
+                      <Apple className='w-4 h-4 text-orange'/>
+                      <span className='text-gray-100 text-sm'>Fruta</span>
+                      <span className='peer-checked:after:content-["✓"] text-sm text-purple-light absolute right-3'></span>
+                    </li>
+                    <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 rounded-b-md relative gap-2'>
+                      <input 
+                        type="radio" 
+                        name="category" 
+                        value="drink" 
+                        id="" 
+                        className='peer absolute inset-0 opacity-0'
+                      />
+                      <Milk className='w-4 h-4 text-blue'/>
+                      <span className='text-gray-100 text-sm'>Bebida</span>
+                      <span className='peer-checked:after:content-["✓"] text-sm text-purple-light absolute right-3'></span>
+                    </li>
+                  </ul>
+
                 </div>
 
                 {/* BOTÃO DE CADASTRAR */}
                 <button 
-                  // onClick={() => addItem({ id: data.length + 1, item: itemDescription, quantity: formattedItemQuantity, measure: itemMeasure, category: itemCategory, done: false })}
                   onClick={addItem}
                   className='bg-purple hover:bg-purple-dark p-2 h-min rounded-full transition-all duration-200'
                 >
