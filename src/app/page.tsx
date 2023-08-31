@@ -152,7 +152,7 @@ export default function Home() {
                 {/* CATEGORIA */}
                 <div className='flex flex-col flex-1 relative'>
                   <div className='relative flex flex-col gap-2 '>
-                    <input onClick={handleCategoryMenu} checked={categoryCheckbox} type="checkbox" id='category' className='peer absolute inset-0 opacity-0 z-10 cursor-pointer'/> {/* talvez trocar a opacidade */}
+                    <input onClick={handleCategoryMenu} checked={categoryCheckbox} type="checkbox" id='category' className='peer absolute inset-0 opacity-0 z-10 cursor-pointer'/>
                     <label htmlFor='category' className='text-xs text-gray-200 peer-checked:text-purple-light transition-all duration-200'>Categoria</label>
                     <div className='flex justify-between items-center p-[0.875rem] w-32 border-[1px] bg-gray-400 text-xs text-gray-200 rounded-md border-gray-300 focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1 peer-checked:border-purple-light peer-checked:ring-1 peer-checked:ring-purple-light peer-checked:outline-none'>
                       <p id='category-name'>{category}</p>
@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <ul id='categories-menu' className='mt-1 w-32 absolute top-20 left-0 hidden'>
+                  <ul id='categories-menu' className='mt-1 w-32 absolute top-20 left-0 hidden z-10'>
                     <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 rounded-t-md relative gap-2'>
                       <input 
                         type="radio" 
