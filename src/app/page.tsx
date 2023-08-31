@@ -88,7 +88,7 @@ export default function Home() {
 
   return (
     <div className='bg-gray-600 h-screen'>
-      <header className=''>
+      <header className='relative'>
         <Background 
           alt='Background image'
           desktopImage={backgroundWeb}
@@ -98,12 +98,12 @@ export default function Home() {
       </header>
       
       
-        <main className='flex flex-col sm:items-center justify-center px-6'>
-          <h1 className='text-gray-100 text-center font-bold text-2xl'>Lista de Compras</h1>
+        <main className='flex flex-col max-w-[720px] mx-auto justify-center px-6'>
+          <h1 className='text-gray-100 text-start font-bold text-2xl mb-6'>Lista de Compras</h1>
 
           {/* FORMULÁRIOS */}
-          <div className='sm:w-[45rem]'>
-            <form className='flex flex-col gap-3 lg:flex-row'>
+          <div className=''>
+            <form className='flex flex-col gap-3 lg:flex-row justify-between'>
               {/* ITENS */}
               <div className='flex flex-col gap-2 group flex-1'>
                 <label htmlFor="item" className='text-gray-200 text-xs group group-focus-within:text-purple-light transition-all duration-200'>Item</label>
@@ -150,11 +150,11 @@ export default function Home() {
                 </div>
 
                 {/* CATEGORIA */}
-                <div className='flex flex-col flex-1 relative'>
+                <div className='flex flex-col relative'>
                   <div className='relative flex flex-col gap-2 '>
                     <input onClick={handleCategoryMenu} checked={categoryCheckbox} type="checkbox" id='category' className='peer absolute inset-0 opacity-0 z-10 cursor-pointer'/>
                     <label htmlFor='category' className='text-xs text-gray-200 peer-checked:text-purple-light transition-all duration-200'>Categoria</label>
-                    <div className='flex justify-between items-center p-[0.875rem] w-32 border-[1px] bg-gray-400 text-xs text-gray-200 rounded-md border-gray-300 focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1 peer-checked:border-purple-light peer-checked:ring-1 peer-checked:ring-purple-light peer-checked:outline-none'>
+                    <div className='flex justify-between items-center p-[0.875rem] w-28 border-[1px] bg-gray-400 text-xs text-gray-200 rounded-md border-gray-300 focus:outline-none focus:border-purple-light focus:ring-purple-light focus:ring-1 peer-checked:border-purple-light peer-checked:ring-1 peer-checked:ring-purple-light peer-checked:outline-none'>
                       <p id='category-name'>{category}</p>
                       {!categoryCheckbox && <ChevronDown className='w-4 h-4 text-gray-200'/>}
                       {categoryCheckbox && <ChevronUp className='w-4 h-4 text-purple-light'/>}
@@ -243,8 +243,8 @@ export default function Home() {
           </div>
 
           {/* LISTA */}
-          <div className='h-[21rem] sm:h-[33rem] overflow-y-auto mt-10 pr-2'>
-            <div className=' sm:w-[44rem] flex flex-col items-stretch gap-2 sm:gap-3'>
+          <div className='h-[21rem] sm:h-[32rem] overflow-y-auto mt-10 pr-2'>
+            <div className=' sm:w-[41.5rem] flex flex-col items-stretch gap-2 sm:gap-3'>
               {/* ITEM */}
               {
                 data.map((item) => (
