@@ -86,8 +86,6 @@ export default function Home() {
     setData([])
   }
 
-  
-
   return (
     <div className='bg-gray-600 h-screen'>
       <header className=''>
@@ -205,12 +203,12 @@ export default function Home() {
                     </li>
                     <li className='flex items-center bg-gray-400 hover:bg-gray-300 p-3 border-[1px] border-gray-300 relative gap-2'>
                       <input 
-                      type="radio" 
-                      name="category" 
-                      value="fruit" 
-                      id="Fruta" 
-                      className='peer absolute inset-0 opacity-0'
-                      onChange={e => handleCategoryChange(e)}
+                        type="radio" 
+                        name="category" 
+                        value="fruit" 
+                        id="Fruta" 
+                        className='peer absolute inset-0 opacity-0'
+                        onChange={e => handleCategoryChange(e)}
                       />
                       <Apple className='w-4 h-4 text-orange'/>
                       <span className='text-gray-100 text-sm'>Fruta</span>

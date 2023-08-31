@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react';
 import { Apple, Sandwich, Carrot, Milk, Beef, MoreVertical } from 'lucide-react';
 
 interface Item {
@@ -13,6 +16,11 @@ interface Item {
 }
 
 export default function Item(props: Item) {
+  const [ showOptions, setShowOptions ] = useState(false)
+
+  function handleOptions() {
+    setShowOptions(!showOptions)
+  }
 
   return (
     <div  className={`bg-gray-400 p-4 border-[1px] border-gray-300 rounded-lg flex items-center justify-between flex-1 ${props.done && 'opacity-50'} `}>
@@ -76,9 +84,27 @@ export default function Item(props: Item) {
             <span className='text-pink text-xs font-semibold hidden sm:block'>carne</span>
           </div>
         }
-        <button onClick={props.handleDeleteItem}>
-          <MoreVertical className='text-purple-light hover:text-purple w-5 h-5 transition-all duration-200' />
-        </button>
+        <div className='relative mt-1'>
+          <button onClick={handleOptions}>
+            <MoreVertical className={`text-purple-light hover:text-purple w-5 h-5 transition-all duration-200 ${showOptions && 'text-purple rotate-90'}`} />
+          </button>
+          {showOptions && (
+            <div className='absolute top-0 right-5'>
+              <button 
+                onClick={props.handleDeleteItem} 
+                className='bg-gray-400 hover:bg-gray-300 p-3 text-gray-200 hover:text-gray-100 text-sm border-[1px] border-gray-300 rounded-t-md transition-all duration-200 w-32 '
+              >
+                Deletar Item
+              </button>
+              <button 
+                onClick={props.handleCleanList} 
+                className='bg-gray-400 hover:bg-gray-300 p-3 text-red-600 hover:text-red-500 text-sm border-[1px] border-gray-300 rounded-b-md transition-all duration-200 w-32'
+              >
+                Apagar Lista
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
