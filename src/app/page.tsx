@@ -243,8 +243,8 @@ export default function Home() {
           </div>
 
           {/* LISTA */}
-          <div className='h-[21rem] sm:h-[32rem] overflow-y-auto mt-10 pr-2'>
-            <div className=' sm:w-[41.5rem] flex flex-col items-stretch gap-2 sm:gap-3'>
+          <div className='h-[21rem] sm:h-[32rem] overflow-y-auto mt-10 pr-2 overflow-x-hidden'>
+            <div className=' sm:w-[41rem] flex flex-col items-stretch gap-2 sm:gap-3'>
               {/* ITEM */}
               {
                 data.map((item) => (
